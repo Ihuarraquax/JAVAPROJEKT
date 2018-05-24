@@ -6,7 +6,7 @@ public class Stan {
     public int iloscWlaman = 0;
 
     // true - właczone/otwarta       false - wyłaczone/zamkniete
-    public boolean stDrzwi = false, stTylnichDrzwi = false, stZasilanie = false, stOgrzewanie = false, stKlimatyzacja = false;
+    public boolean stDrzwi = false, stTylnichDrzwi = false, stGaraz = false, stZasilanie = false, stOgrzewanie = false, stKlimatyzacja = false;
     // TODO ustawic swiatla domyslnie na false!
     
     
@@ -39,6 +39,7 @@ public class Stan {
         }
         stDrzwi = false;
         stTylnichDrzwi = false;
+        stGaraz = false;
 
     }
 
