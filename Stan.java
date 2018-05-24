@@ -8,12 +8,9 @@ public class Stan {
     // true - właczone/otwarta       false - wyłaczone/zamkniete
     public boolean stDrzwi = false, stTylnichDrzwi = false, stGaraz = false, stZasilanie = false, stOgrzewanie = false, stKlimatyzacja = false;
     // TODO ustawic swiatla domyslnie na false!
-    
-    
-    
+
     // 0 - zewnętrzne; 1 - kuchnia; 2 - korytarz; 3 - pokoj dziecka; 4 - sypialnia; 5 - salon
     public boolean[] stSwiatlo = new boolean[6];
-
 
     public int tempPowietrza = 22;
 
@@ -47,18 +44,22 @@ public class Stan {
         // ustawia temperature potwietrza tworzac nowy obiekt klimy/ogrzewania i zmieniajac jego status w obiekcie stan
 
         //usawienie stanu temperatury z parametru
-        this.tempPowietrza=temp;
-        
-        
-        if (temp == this.tempPowietrza) {
-
-            stOgrzewanie = false;
-            stKlimatyzacja = false;
-
-        }
         Klimatyzacja klima = new Klimatyzacja();
         Grzejnik grzejnik = new Grzejnik();
-        
+
+        if (temp == this.tempPowietrza) {
+            if (stOgrzewanie) {
+                stOgrzewanie = false;
+                grzejnik.off(this);
+            }
+            if (stKlimatyzacja) {
+                stKlimatyzacja = false;
+                klima.off(this);
+            }
+            
+
+        }
+
         if (temp < this.tempPowietrza) {
             //wlącza klimatyzacje jesli jest wyłączona
             //wyłącza grzejnik jesli jest włączony
@@ -70,7 +71,7 @@ public class Stan {
                 grzejnik.off(this);
             }
         }
-        
+
         if (temp > this.tempPowietrza) {
             // odwrotnie niz wyzej
             //
@@ -82,11 +83,17 @@ public class Stan {
                 klima.off(this);
             }
         }
-        
-        
+        this.tempPowietrza = temp;
     }
-    
-    
-    
+
+    public void toggleSwiatlo(int nr) {
+        Swiatlo swiatlo = new Swiatlo(nr);
+
+        if (this.stSwiatlo[nr]) {
+            swiatlo.off(this);
+        } else {
+            swiatlo.on(this);
+        }
+    }
 
 }

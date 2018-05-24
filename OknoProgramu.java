@@ -7,7 +7,6 @@ import java.awt.Font;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Hubii
@@ -15,10 +14,18 @@ import java.awt.Font;
 public class OknoProgramu extends javax.swing.JFrame {
 
     Stan stan;
+
     public OknoProgramu() {
-        stan = new Stan();
+
         initComponents();
         jPanel2.setVisible(false);
+        jPanel7.setVisible(false);
+        jPanel1.setVisible(false);
+        
+
+        stan = new Stan();
+        wczytajDane();
+
     }
 
     /**
@@ -29,7 +36,6 @@ public class OknoProgramu extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         jPanel5 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -43,30 +49,49 @@ public class OknoProgramu extends javax.swing.JFrame {
         wysGlowneDrzwi = new javax.swing.JLabel();
         wysTylneDrzwi = new javax.swing.JLabel();
         wysGaraz = new javax.swing.JLabel();
-        jProgressBar1 = new javax.swing.JProgressBar();
+        wysZuzycieEnergii = new javax.swing.JProgressBar();
         jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        wysGlowneDrzwi1 = new javax.swing.JLabel();
-        wysGlowneDrzwi2 = new javax.swing.JLabel();
+        wysOgrzewanie = new javax.swing.JLabel();
+        wysKlimatyzacja = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
+        wysZewnetrzne = new javax.swing.JLabel();
+        wysKuchnia = new javax.swing.JLabel();
+        wysKorytarz = new javax.swing.JLabel();
+        wysPokojDziecka = new javax.swing.JLabel();
+        wysSypialnia = new javax.swing.JLabel();
+        wysSalon = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
+        jToggleButton5 = new javax.swing.JToggleButton();
+        jToggleButton6 = new javax.swing.JToggleButton();
+        jToggleButton7 = new javax.swing.JToggleButton();
+        jToggleButton8 = new javax.swing.JToggleButton();
+        jToggleButton9 = new javax.swing.JToggleButton();
+        jToggleButton10 = new javax.swing.JToggleButton();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
+        zadanaTemp = new javax.swing.JSpinner();
+        jButton4 = new javax.swing.JButton();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jToggleButton1 = new javax.swing.JToggleButton();
+        jSpinner1 = new javax.swing.JSpinner();
         jButton2 = new javax.swing.JButton();
+        jLabel20 = new javax.swing.JLabel();
+        jToggleButton2 = new javax.swing.JToggleButton();
+        jToggleButton3 = new javax.swing.JToggleButton();
+        jToggleButton4 = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1000, 618));
-        setPreferredSize(new java.awt.Dimension(1000, 618));
         setResizable(false);
         setSize(new java.awt.Dimension(1000, 618));
 
@@ -111,17 +136,22 @@ public class OknoProgramu extends javax.swing.JFrame {
         jPanel5.add(wysTemp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 30, -1, -1));
 
         wysGlowneDrzwi.setForeground(new java.awt.Color(255, 255, 255));
+        wysGlowneDrzwi.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         wysGlowneDrzwi.setText("jLabel2");
-        jPanel5.add(wysGlowneDrzwi, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, -1, -1));
+        jPanel5.add(wysGlowneDrzwi, new org.netbeans.lib.awtextra.AbsoluteConstraints(154, 120, 110, -1));
 
         wysTylneDrzwi.setForeground(new java.awt.Color(255, 255, 255));
+        wysTylneDrzwi.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         wysTylneDrzwi.setText("jLabel2");
-        jPanel5.add(wysTylneDrzwi, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, -1, -1));
+        jPanel5.add(wysTylneDrzwi, new org.netbeans.lib.awtextra.AbsoluteConstraints(154, 140, 110, -1));
 
         wysGaraz.setForeground(new java.awt.Color(255, 255, 255));
+        wysGaraz.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         wysGaraz.setText("jLabel2");
-        jPanel5.add(wysGaraz, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 160, -1, -1));
-        jPanel5.add(jProgressBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 314, 250, -1));
+        jPanel5.add(wysGaraz, new org.netbeans.lib.awtextra.AbsoluteConstraints(164, 160, 100, -1));
+
+        wysZuzycieEnergii.setMaximum(77);
+        jPanel5.add(wysZuzycieEnergii, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 314, 250, -1));
 
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
@@ -143,34 +173,34 @@ public class OknoProgramu extends javax.swing.JFrame {
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("REGULACJA TEMPERATURY");
 
-        wysGlowneDrzwi1.setForeground(new java.awt.Color(255, 255, 255));
-        wysGlowneDrzwi1.setText("jLabel2");
+        wysOgrzewanie.setForeground(new java.awt.Color(255, 255, 255));
+        wysOgrzewanie.setText("jLabel2");
 
-        wysGlowneDrzwi2.setForeground(new java.awt.Color(255, 255, 255));
-        wysGlowneDrzwi2.setText("jLabel2");
+        wysKlimatyzacja.setForeground(new java.awt.Color(255, 255, 255));
+        wysKlimatyzacja.setText("jLabel2");
 
         jLabel11.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("OŚWIETLENIE");
 
-        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setText("ZEWNĘTRZNE");
+        wysZewnetrzne.setForeground(new java.awt.Color(255, 255, 255));
+        wysZewnetrzne.setText("ZEWNĘTRZNE");
 
-        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel13.setText("KUCHNIA");
+        wysKuchnia.setForeground(new java.awt.Color(255, 255, 255));
+        wysKuchnia.setText("KUCHNIA");
 
-        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel14.setText("KORYTARZ");
+        wysKorytarz.setForeground(new java.awt.Color(255, 255, 255));
+        wysKorytarz.setText("KORYTARZ");
 
-        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel15.setText("POKOJ DZIECKA");
+        wysPokojDziecka.setForeground(new java.awt.Color(255, 255, 255));
+        wysPokojDziecka.setText("POKOJ DZIECKA");
 
-        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel16.setText("SYPIALNIA");
+        wysSypialnia.setForeground(new java.awt.Color(255, 255, 255));
+        wysSypialnia.setText("SYPIALNIA");
 
-        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel17.setText("KORYTARZ");
+        wysSalon.setForeground(new java.awt.Color(255, 255, 255));
+        wysSalon.setText("SALON");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -183,24 +213,24 @@ public class OknoProgramu extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(wysGlowneDrzwi2))
+                        .addComponent(wysKlimatyzacja))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(wysGlowneDrzwi1))
+                        .addComponent(wysOgrzewanie))
                     .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel14)
+                        .addComponent(wysKorytarz)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel17))
+                        .addComponent(wysSalon))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel12)
+                        .addComponent(wysZewnetrzne)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel15))
+                        .addComponent(wysPokojDziecka))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel13)
+                        .addComponent(wysKuchnia)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel16)))
+                        .addComponent(wysSypialnia)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -211,57 +241,157 @@ public class OknoProgramu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(wysGlowneDrzwi1))
+                    .addComponent(wysOgrzewanie))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(wysGlowneDrzwi2))
+                    .addComponent(wysKlimatyzacja))
                 .addGap(61, 61, 61)
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(jLabel15))
+                    .addComponent(wysZewnetrzne)
+                    .addComponent(wysPokojDziecka))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13)
-                    .addComponent(jLabel16))
+                    .addComponent(wysKuchnia)
+                    .addComponent(wysSypialnia))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14)
-                    .addComponent(jLabel17))
+                    .addComponent(wysKorytarz)
+                    .addComponent(wysSalon))
                 .addContainerGap(39, Short.MAX_VALUE))
         );
 
         jPanel5.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(279, 60, 210, -1));
 
         jPanel6.setBackground(new java.awt.Color(200, 200, 200));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 153));
+        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 239, Short.MAX_VALUE)
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        jToggleButton5.setText("KUCHNIA");
+        jToggleButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton5ActionPerformed(evt);
+            }
+        });
+        jPanel7.add(jToggleButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 164, 93, -1));
+
+        jToggleButton6.setText("ZEWĘTRZNE");
+        jToggleButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton6ActionPerformed(evt);
+            }
+        });
+        jPanel7.add(jToggleButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 93, 40));
+
+        jToggleButton7.setText("KORYTARZ");
+        jToggleButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton7ActionPerformed(evt);
+            }
+        });
+        jPanel7.add(jToggleButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 194, 93, -1));
+
+        jToggleButton8.setText("<HTML>POKÓJ<BR>DZIECKA");
+        jToggleButton8.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
+        jToggleButton8.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jToggleButton8.setMargin(new java.awt.Insets(2, 3, 2, 3));
+        jToggleButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton8ActionPerformed(evt);
+            }
+        });
+        jPanel7.add(jToggleButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 93, -1));
+
+        jToggleButton9.setText("SYPIALNIA");
+        jToggleButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton9ActionPerformed(evt);
+            }
+        });
+        jPanel7.add(jToggleButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(116, 164, 93, -1));
+
+        jToggleButton10.setText("SALON");
+        jToggleButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton10ActionPerformed(evt);
+            }
+        });
+        jPanel7.add(jToggleButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(116, 194, 93, -1));
+
+        jLabel22.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel22.setText("<html>PANEL KONTROLNY<br> OŚWIETLENIA</html>");
+        jPanel7.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 12, 197, -1));
+
+        jLabel23.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel23.setText("<html>Zdalna kontrola nad<br> oświetleniem w budynku.");
+        jPanel7.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 59, 197, -1));
+
+        jPanel6.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(749, 12, 220, 230));
 
         jPanel1.setBackground(new java.awt.Color(255, 51, 51));
+
+        zadanaTemp.setModel(new javax.swing.SpinnerNumberModel(22, 15, 30, 1));
+
+        jButton4.setText("Ustaw");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jLabel18.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel18.setText("<html>PANEL KONTROLNY<br> OGRZEWANIA I KLIMATYZACJI</html>");
+
+        jLabel19.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel19.setText("<html>Wprowadź żądaną temperature a<br> program zajmie się wszystkim!");
+
+        jLabel21.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel21.setText("℃");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 294, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(zadanaTemp, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(8, 8, 8)
+                        .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addComponent(jButton4))
+                    .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(zadanaTemp, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(95, 95, 95))
         );
+
+        jPanel6.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(449, 12, 290, 230));
 
         jButton1.setText("odswież");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -269,43 +399,52 @@ public class OknoProgramu extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
+        jPanel6.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 170, -1, -1));
 
-        jButton2.setText("jButton2");
+        jButton3.setText("jButton3");
+        jPanel6.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(241, 21, -1, -1));
+
+        jToggleButton1.setText("ZASILANIE");
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
+        jPanel6.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(332, 12, 106, 43));
+
+        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(1, 0, 20, 1));
+        jPanel6.add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 54, 29));
+
+        jButton2.setText("Ustaw");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
+        jPanel6.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, -1, 30));
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 283, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1)
-                            .addComponent(jButton2))
-                        .addGap(0, 219, Short.MAX_VALUE))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
+        jLabel20.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel6.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 170, -1));
+
+        jToggleButton2.setText("GARAŻ");
+        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton2ActionPerformed(evt);
+            }
+        });
+        jPanel6.add(jToggleButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, -1, -1));
+
+        jToggleButton3.setText("GŁÓWNE DRZWI");
+        jToggleButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton3ActionPerformed(evt);
+            }
+        });
+        jPanel6.add(jToggleButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, -1));
+
+        jToggleButton4.setText("TYLNE DRZWI");
+        jPanel6.add(jToggleButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -313,34 +452,88 @@ public class OknoProgramu extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 500, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        if (jPanel2.isVisible()) {
+            jPanel2.setVisible(false);
+            jPanel7.setVisible(false);
+            jPanel1.setVisible(false);
+            jLabel2.setForeground(new java.awt.Color(70, 70, 70));
+        } else {
+            jPanel2.setVisible(true);
+            jPanel7.setVisible(true);
+            jPanel1.setVisible(true);
+            jLabel2.setForeground(new java.awt.Color(255, 255, 0));
+        }
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         wczytajDane();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        if(jPanel2.isVisible()){
-            jPanel2.setVisible(false);
-            jLabel2.setForeground(new java.awt.Color(70, 70, 70));
-        }
-        else{
-            jPanel2.setVisible(true);
-            jLabel2.setForeground(new java.awt.Color(255, 255, 0));
-        }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton3ActionPerformed
+
+    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+
+        stan.ustawTemp((Integer)zadanaTemp.getValue());
+        wczytajDane();
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jToggleButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton9ActionPerformed
+        stan.toggleSwiatlo(4);
+        wczytajDane();
+    }//GEN-LAST:event_jToggleButton9ActionPerformed
+
+    private void jToggleButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton10ActionPerformed
+        stan.toggleSwiatlo(5);
+        wczytajDane();
+    }//GEN-LAST:event_jToggleButton10ActionPerformed
+
+    private void jToggleButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton8ActionPerformed
+        stan.toggleSwiatlo(3);
+        wczytajDane();
+    }//GEN-LAST:event_jToggleButton8ActionPerformed
+
+    private void jToggleButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton7ActionPerformed
+        stan.toggleSwiatlo(2);
+        wczytajDane();
+    }//GEN-LAST:event_jToggleButton7ActionPerformed
+
+    private void jToggleButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton5ActionPerformed
+        stan.toggleSwiatlo(1);
+        wczytajDane();
+    }//GEN-LAST:event_jToggleButton5ActionPerformed
+
+    private void jToggleButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton6ActionPerformed
+        stan.toggleSwiatlo(0);
+        wczytajDane();
+    }//GEN-LAST:event_jToggleButton6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -380,16 +573,18 @@ public class OknoProgramu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -402,24 +597,135 @@ public class OknoProgramu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
-    private javax.swing.JProgressBar jProgressBar1;
+    private javax.swing.JSpinner jSpinner1;
+    private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JToggleButton jToggleButton10;
+    private javax.swing.JToggleButton jToggleButton2;
+    private javax.swing.JToggleButton jToggleButton3;
+    private javax.swing.JToggleButton jToggleButton4;
+    private javax.swing.JToggleButton jToggleButton5;
+    private javax.swing.JToggleButton jToggleButton6;
+    private javax.swing.JToggleButton jToggleButton7;
+    private javax.swing.JToggleButton jToggleButton8;
+    private javax.swing.JToggleButton jToggleButton9;
     private javax.swing.JLabel wysGaraz;
     private javax.swing.JLabel wysGlowneDrzwi;
-    private javax.swing.JLabel wysGlowneDrzwi1;
-    private javax.swing.JLabel wysGlowneDrzwi2;
+    private javax.swing.JLabel wysKlimatyzacja;
+    private javax.swing.JLabel wysKorytarz;
+    private javax.swing.JLabel wysKuchnia;
+    private javax.swing.JLabel wysOgrzewanie;
     private javax.swing.JLabel wysOsob;
+    private javax.swing.JLabel wysPokojDziecka;
+    private javax.swing.JLabel wysSalon;
+    private javax.swing.JLabel wysSypialnia;
     private javax.swing.JLabel wysTemp;
     private javax.swing.JLabel wysTylneDrzwi;
+    private javax.swing.JLabel wysZewnetrzne;
+    private javax.swing.JProgressBar wysZuzycieEnergii;
+    private javax.swing.JSpinner zadanaTemp;
     // End of variables declaration//GEN-END:variables
 
-    public void wczytajDane(){
+    public void wczytajDane() {
         //funkcja wczytuje dane do Labeli. Cała konwersja dokonywana jest tutaj.
-        
+
         wysOsob.setText(Integer.toString(stan.iloscOsobWBudynku));
-        wysTemp.setText(Integer.toString(stan.tempPowietrza)+"*C");
+        wysTemp.setText(Integer.toString(stan.tempPowietrza) + "℃");
+
+        //Drzwi główne
+        if (stan.stDrzwi) {
+            wysGlowneDrzwi.setText("OTWARTE");
+            wysGlowneDrzwi.setForeground(Color.green);
+        } else {
+            wysGlowneDrzwi.setText("ZAMKNIĘTE");
+            wysGlowneDrzwi.setForeground(Color.red);
+        }
+        //
+
+        //Drzwi tylnie
+        if (stan.stTylnichDrzwi) {
+            wysTylneDrzwi.setText("OTWARTE");
+            wysTylneDrzwi.setForeground(Color.green);
+        } else {
+            wysTylneDrzwi.setText("ZAMKNIĘTE");
+            wysTylneDrzwi.setForeground(Color.red);
+        }
+        //
+
+        //Garaż
+        if (stan.stGaraz) {
+            wysGaraz.setText("OTWARTE");
+            wysGaraz.setForeground(Color.green);
+        } else {
+            wysGaraz.setText("ZAMKNIĘTE");
+            wysGaraz.setForeground(Color.red);
+        }
+
+//////////////////////////////////////
+        //Zuzycie energii
+        wysZuzycieEnergii.setValue(stan.zuzycieEnergi);
+        //
         
-        wysTemp.setText(Integer.toString(stan.tempPowietrza)+"*C");
+        
+        //
+///////////////////////////////////////
+        //Temperatura
+        if(stan.stOgrzewanie){
+            wysOgrzewanie.setText("WŁĄCZONE");
+            wysOgrzewanie.setForeground(new java.awt.Color(255, 150, 0));
+        }
+        else{
+            wysOgrzewanie.setText("WYŁĄCZONE");
+            wysOgrzewanie.setForeground(new java.awt.Color(50, 50, 50));
+        }
+        
+        if(stan.stKlimatyzacja){
+            wysKlimatyzacja.setText("WŁĄCZONE");
+            wysKlimatyzacja.setForeground(new java.awt.Color(0, 200, 255));
+        }
+        else{
+            wysKlimatyzacja.setText("WYŁĄCZONE");
+            wysKlimatyzacja.setForeground(new java.awt.Color(50, 50, 50));
+        }
+
+///////////////////////////////////////
+        //Swiatła
+        if (stan.stSwiatlo[0]) {
+            wysZewnetrzne.setForeground(new java.awt.Color(200, 200, 0));
+        } else {
+            wysZewnetrzne.setForeground(new java.awt.Color(50, 50, 50));
+        }
+
+        if (stan.stSwiatlo[1]) {
+            wysKuchnia.setForeground(new java.awt.Color(200, 200, 0));
+        } else {
+            wysKuchnia.setForeground(new java.awt.Color(50, 50, 50));
+        }
+
+        if (stan.stSwiatlo[2]) {
+            wysKorytarz.setForeground(new java.awt.Color(200, 200, 0));
+        } else {
+            wysKorytarz.setForeground(new java.awt.Color(50, 50, 50));
+        }
+
+        if (stan.stSwiatlo[3]) {
+            wysPokojDziecka.setForeground(new java.awt.Color(200, 200, 0));
+        } else {
+            wysPokojDziecka.setForeground(new java.awt.Color(50, 50, 50));
+        }
+
+        if (stan.stSwiatlo[4]) {
+            wysSypialnia.setForeground(new java.awt.Color(200, 200, 0));
+        } else {
+            wysSypialnia.setForeground(new java.awt.Color(50, 50, 50));
+        }
+
+        if (stan.stSwiatlo[5]) {
+            wysSalon.setForeground(new java.awt.Color(200, 200, 0));
+        } else {
+            wysSalon.setForeground(new java.awt.Color(50, 50, 50));
+        }
+        //
+        //////////////////////////////
+
     }
 }

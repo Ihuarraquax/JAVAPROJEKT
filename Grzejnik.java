@@ -12,7 +12,7 @@ public class Grzejnik extends UrzadzenieElektryczne implements WlWyl {
 
     public Grzejnik() {
         //TOOOOOOO DOOOOOOO zmienic wartosc na poprawna
-        this.zuzycie = 80;
+        this.zuzycie = 60;
     }
 
 

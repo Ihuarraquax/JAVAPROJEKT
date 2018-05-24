@@ -11,7 +11,7 @@
 public class Klimatyzacja extends UrzadzenieElektryczne implements WlWyl, ZuzycieEnergii {
 
     public Klimatyzacja() {
-        this.zuzycie = 50;
+        this.zuzycie = 9;
     }
 
     //Przy właczeniu i wyłaczeniu zmienna zuzycieEnergii z obiektu stan zmienia sie automatycznie
