@@ -1,3 +1,6 @@
+
+import java.io.Serializable;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -8,7 +11,7 @@
  *
  * @author Hubii
  */
-public class Swiatlo extends UrzadzenieElektryczne implements WlWyl, ZuzycieEnergii {
+public class Swiatlo extends UrzadzenieElektryczne implements WlWyl, ZuzycieEnergii, Serializable {
 
     int nr;
 
@@ -35,8 +38,10 @@ public class Swiatlo extends UrzadzenieElektryczne implements WlWyl, ZuzycieEner
 
     @Override
     public void off(Stan stan) {
+        if(stan.stSwiatlo[nr]){
+            this.zmniejsz(stan);
+        }
         stan.stSwiatlo[nr] = false;
-        this.zmniejsz(stan);
     }
 
 }

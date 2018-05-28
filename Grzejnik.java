@@ -1,3 +1,6 @@
+
+import java.io.Serializable;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -8,7 +11,7 @@
  *
  * @author Hubii
  */
-public class Grzejnik extends UrzadzenieElektryczne implements WlWyl {
+public class Grzejnik extends UrzadzenieElektryczne implements WlWyl, Serializable {
 
     public Grzejnik() {
         //TOOOOOOO DOOOOOOO zmienic wartosc na poprawna
