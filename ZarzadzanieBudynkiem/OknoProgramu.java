@@ -21,6 +21,7 @@ public class OknoProgramu extends javax.swing.JFrame {
 
     Stan stan;
     ArrayList<Usterka> listaUsterek;
+    DefaultListModel listModel = new DefaultListModel();
 
     public OknoProgramu() {
 
@@ -29,7 +30,10 @@ public class OknoProgramu extends javax.swing.JFrame {
         jFrame1.setLocationRelativeTo(null);
 
         stan = new Stan();
-        listaUsterek = new ArrayList<>();
+        listaUsterek = Usterka.odczytUsterki(listaUsterek);
+        
+        System.out.println(listaUsterek.size());
+        odswiezUsterki();
         if (!stan.stZasilanie) {
             jPanel2.setVisible(false);
             jPanel7.setVisible(false);
@@ -54,7 +58,7 @@ public class OknoProgramu extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextAreaOpis = new javax.swing.JTextArea();
-        jButton7 = new javax.swing.JButton();
+        jButtonZglos = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         wysOsob = new javax.swing.JLabel();
@@ -99,8 +103,6 @@ public class OknoProgramu extends javax.swing.JFrame {
         jLabel21 = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
         jLabel26 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         jToggleZasilanie = new javax.swing.JToggleButton();
         zadaneIloscOsob = new javax.swing.JSpinner();
         jButtonUstawIloscOsob = new javax.swing.JButton();
@@ -111,13 +113,13 @@ public class OknoProgramu extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jLabel25 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jLabel19 = new javax.swing.JLabel();
         jButtonDodajUsterke = new javax.swing.JButton();
+        jLabel19 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jListUsterki = new javax.swing.JList<>();
-        jButton2 = new javax.swing.JButton();
+        jButtonNapraw = new javax.swing.JButton();
         jLabel27 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
+        jLabel28 = new javax.swing.JLabel();
 
         jFrame1.setTitle("Kreator usterek");
         jFrame1.setAlwaysOnTop(true);
@@ -126,16 +128,19 @@ public class OknoProgramu extends javax.swing.JFrame {
 
         jLabel12.setText("Nazwa:");
 
+        jTextFieldNazwaUsterki.setMaximumSize(new java.awt.Dimension(4, 19));
+
         jLabel13.setText("Opis:");
 
         jTextAreaOpis.setColumns(20);
         jTextAreaOpis.setRows(5);
+        jTextAreaOpis.setMaximumSize(new java.awt.Dimension(160, 75));
         jScrollPane2.setViewportView(jTextAreaOpis);
 
-        jButton7.setText("Zgłoś");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        jButtonZglos.setText("Zgłoś");
+        jButtonZglos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                jButtonZglosActionPerformed(evt);
             }
         });
 
@@ -151,11 +156,11 @@ public class OknoProgramu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane2)
-                    .addComponent(jTextFieldNazwaUsterki))
+                    .addComponent(jTextFieldNazwaUsterki, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jFrame1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton7)
+                .addComponent(jButtonZglos)
                 .addContainerGap())
         );
         jFrame1Layout.setVerticalGroup(
@@ -170,7 +175,7 @@ public class OknoProgramu extends javax.swing.JFrame {
                     .addComponent(jLabel13)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton7)
+                .addComponent(jButtonZglos)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -502,22 +507,8 @@ public class OknoProgramu extends javax.swing.JFrame {
 
         jPanel6.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, 290, 230));
 
-        jButton1.setText("odswież");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel6.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 170, -1, -1));
-
-        jButton3.setText("jButton3");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-        jPanel6.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(241, 21, -1, -1));
-
+        jToggleZasilanie.setBackground(new java.awt.Color(255, 255, 102));
+        jToggleZasilanie.setForeground(new java.awt.Color(0, 0, 0));
         jToggleZasilanie.setText("ZASILANIE");
         jToggleZasilanie.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -569,14 +560,10 @@ public class OknoProgramu extends javax.swing.JFrame {
 
         jLabel25.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel25.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel25.setText("USTERKI");
 
         jPanel3.setBackground(new java.awt.Color(204, 204, 255));
-
-        jLabel19.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel19.setText("Zgłoś usterkę:");
 
         jButtonDodajUsterke.setText("Dodaj");
         jButtonDodajUsterke.addActionListener(new java.awt.event.ActionListener() {
@@ -585,87 +572,101 @@ public class OknoProgramu extends javax.swing.JFrame {
             }
         });
 
+        jLabel19.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel19.setText("Zgłoś usterkę:");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addComponent(jButtonDodajUsterke, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(jButtonDodajUsterke, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel19))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(6, 6, 6)
                 .addComponent(jLabel19)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonDodajUsterke)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jListUsterki.setModel(new DefaultListModel());
+        jListUsterki.setModel(listModel);
+        jListUsterki.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jListUsterkiMouseMoved(evt);
+            }
+        });
         jScrollPane1.setViewportView(jListUsterki);
 
-        jButton2.setText("Napraw");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonNapraw.setText("Napraw");
+        jButtonNapraw.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButtonNaprawActionPerformed(evt);
             }
         });
 
         jLabel27.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel27.setText("<html>Aby usunąć usterkę z listy, zaznacz ją i kliknij \"Napraw\"");
+        jLabel27.setText("<html>Opis usterki pojawi się po najechaniu na nią myszkiem");
 
-        jButton5.setText("Archiwum");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
+        jLabel28.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel28.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel28.setText("<html>Aby usunąć usterkę z listy, zaznacz ją i kliknij \"Napraw\"");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                        .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(4, 4, 4))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(jButtonNapraw, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(62, 62, 62)))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addComponent(jLabel27, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap(14, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel25)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel25)
+                                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(7, 7, 7)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2))))
+                                .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonNapraw)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -674,26 +675,28 @@ public class OknoProgramu extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 992, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(1020, 661));
+        setSize(new java.awt.Dimension(1023, 656));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -725,10 +728,6 @@ public class OknoProgramu extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_jToggleZasilanieActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        wczytajDane();
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jToggleGlowneDrzwiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleGlowneDrzwiActionPerformed
         if (stan.stZasilanie) {
@@ -796,10 +795,6 @@ public class OknoProgramu extends javax.swing.JFrame {
         wczytajDane();
     }//GEN-LAST:event_jToggleZewnatrzActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        System.out.println(jToggleZewnatrz.isSelected());
-    }//GEN-LAST:event_jButton3ActionPerformed
-
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         stan.ustawTemp(stan.TEMP);
         zadanaTemp.setValue(stan.TEMP);
@@ -823,45 +818,55 @@ public class OknoProgramu extends javax.swing.JFrame {
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         stan.zapiszStan();
+        Usterka.zapiszUsterki(listaUsterek);
     }//GEN-LAST:event_formWindowClosing
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void jButtonNaprawActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNaprawActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+        int index = jListUsterki.getSelectedIndex();
+        System.out.println(index);
+        if (index != -1) {
+            //listModel.remove(index);
+            listaUsterek.remove(index);
+            odswiezUsterki();
+        }
+    }//GEN-LAST:event_jButtonNaprawActionPerformed
 
     private void jButtonDodajUsterkeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDodajUsterkeActionPerformed
         jFrame1.setVisible(true);
     }//GEN-LAST:event_jButtonDodajUsterkeActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        String n = jTextFieldNazwaUsterki.getText();
-        String o = jTextAreaOpis.getText();
-        Usterka u = new Usterka(listaUsterek, n, o);
+    private void jButtonZglosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonZglosActionPerformed
+
+        Usterka u = new Usterka(listaUsterek, jTextFieldNazwaUsterki.getText(), jTextAreaOpis.getText());
+        //listModel.add(listaUsterek.size() - 1, u.nazwa);
 
         jFrame1.setVisible(false);
         odswiezUsterki();
 
 
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_jButtonZglosActionPerformed
+
+    private void jListUsterkiMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListUsterkiMouseMoved
+        JList l = (JList) evt.getSource();
+        ListModel m = l.getModel();
+        int index = jListUsterki.locationToIndex(evt.getPoint());
+        if (index > -1) {
+            jListUsterki.setToolTipText(listaUsterek.get(index).opis);
+        }
+    }//GEN-LAST:event_jListUsterkiMouseMoved
 
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JButton jButtonDodajUsterke;
+    private javax.swing.JButton jButtonNapraw;
     private javax.swing.JButton jButtonUstawIloscOsob;
+    private javax.swing.JButton jButtonZglos;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -878,6 +883,7 @@ public class OknoProgramu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1091,16 +1097,12 @@ public class OknoProgramu extends javax.swing.JFrame {
     }
 
     private void odswiezUsterki() {
-
-        DefaultListModel listModel = new DefaultListModel();
-        Usterka ust;
+        listModel.removeAllElements();
+        
         for (int i = 0; i < listaUsterek.size(); i++) {
-            ust = listaUsterek.get(i);
-            System.out.println(i);
-            listModel.add(i, ust.nazwa);
+            listModel.addElement(listaUsterek.get(i).nazwa);
         }
-
-        jListUsterki = new JList(listModel);
+        jListUsterki.setModel(listModel);
 
     }
 }
